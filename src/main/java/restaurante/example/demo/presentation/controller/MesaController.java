@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/mesa")
-// Controlador encargado de procesar las peticiones y respuestas relacionadas con las mesas
+// Controlador encargado de procesar las peticiones relacionadas con las mesas
 public class MesaController {
         
     @Autowired
