@@ -17,11 +17,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/mesa")
-// Controlador encargado de procesar las peticiones relacionadas con las mesas
+// Controlador encargado de procesar las peticiones y respuestas relacionadas con las mesas
 public class MesaController {
-
+        
     @Autowired
     private IMesaService mesaService; // Interfaz de servicio para manejar la lógica de negocio relacionada con las mesas
+
+    public MesaController(IMesaService mesaService) {
+        this.mesaService = mesaService;
+    }
 
     /**
      * Obtener todas las mesas.
@@ -30,9 +34,9 @@ public class MesaController {
      * @return ResponseEntity con un mensaje y una lista de mesas o un mensaje de error si no hay mesas
      */
     @GetMapping("/find/all")
-    public ResponseEntity<?> getAllMesas() {
+    public ResponseEntity<?> findAll() {
 
-        List<MesaDTO> mesasDto = this.mesaService.getAll();
+        List<MesaDTO> mesasDto = this.mesaService.findAll();
         
         // Verifica si la lista de mesas está vacía y devuelve una respuesta NOT_FOUND en ese caso
         if (mesasDto.isEmpty()) {
@@ -59,9 +63,9 @@ public class MesaController {
      * @throws EntityNotFoundException si la mesa no se encuentra
      */
     @GetMapping("/find/{id}")
-    public ResponseEntity<?> getMesaById(@PathVariable Long id) throws EntityNotFoundException {
+    public ResponseEntity<?> findById(@PathVariable Long id) throws EntityNotFoundException {
         validateId(id); // Validación del ID        
-        MesaDTO mesaDto = this.mesaService.getOneById(id);
+        MesaDTO mesaDto = this.mesaService.findById(id);
         return new ResponseEntity<>(
                 MessageResponseDto.builder()
                 .message("Se realizó la búsqueda con éxito")
@@ -78,7 +82,7 @@ public class MesaController {
      * @throws EntityDataAccesException si ocurre algún error durante la creación
      */
     @PostMapping("/create")
-    public ResponseEntity<?> createMesa(@Valid @RequestBody MesaDTO mesaDto) throws EntityDataAccesException {
+    public ResponseEntity<?> create(@Valid @RequestBody MesaDTO mesaDto) throws EntityDataAccesException {
         MesaDTO mesaDtoCreated = this.mesaService.create(mesaDto);
         
         return new ResponseEntity<>(
@@ -99,7 +103,7 @@ public class MesaController {
      * @throws EntityNotFoundException si la mesa no se encuentra
      */
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateMesa(@PathVariable Long id, @Valid @RequestBody MesaDTO mesaDto) throws EntityDataAccesException, EntityNotFoundException {
+    public ResponseEntity<?> update(@PathVariable Long id, @Valid @RequestBody MesaDTO mesaDto) throws EntityDataAccesException, EntityNotFoundException {
         validateId(id); // Validación del ID
         
         MesaDTO updatedMesaDto = this.mesaService.update(id, mesaDto);

@@ -5,10 +5,10 @@ import restaurante.example.demo.persistence.model.MesaEntity;
 import java.util.List;
 import java.util.Optional;
 
-// Interfaz que define las operaciones básicas de acceso a datos para la entidad "Mesa".
+// Interfaz que define las operaciones de base datos que realiza la entida mesa.
 public interface IMesaDao {
-    List<MesaEntity> findAll(); // Listar todos los registros de mesas en la base de datos.
-    Optional<MesaEntity> findById(Long id); // Buscar un registro de mesa por su ID.
-    MesaEntity save(MesaEntity mesa); // Guardar o actualizar una mesa en la base de datos.
-    void deleteById(Long id); // Eliminar un registro de mesa por su ID.
+    List<MesaEntity> findAll();
+    Optional<MesaEntity> findById(Long id); 
+    MesaEntity save(MesaEntity mesa);
+    void deleteById(Long id); 
 }

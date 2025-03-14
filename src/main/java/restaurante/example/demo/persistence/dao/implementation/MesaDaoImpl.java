@@ -11,12 +11,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-// Implementación de la interfaz IMesaDao, que maneja las operaciones de acceso a datos para la entidad "Mesa".
+// Componeten encargado de conectarse e interactuar con la base de datos ejecutando operaciones relacionados con la mesa.
 public class MesaDaoImpl implements IMesaDao {
     
     @Autowired
     private IMesaRepository mesaRepository; // Repositorio de acceso a datos para la entidad "Mesa"
-
+    
     @Override
     @Transactional(readOnly = true)
     public List<MesaEntity> findAll() {

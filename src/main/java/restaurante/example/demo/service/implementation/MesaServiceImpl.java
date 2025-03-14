@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-// Servicio encargado de implementar la lógica de negocio para la entidad Mesa.
+// Este servicio contien los casos de uso de la mesa dentro de la aplicacion.
 public class MesaServiceImpl implements IMesaService {
 
     @Autowired
@@ -27,7 +27,7 @@ public class MesaServiceImpl implements IMesaService {
 
     // Obtiene la lista de todas las mesas en forma de DTOs
     @Override
-    public List<MesaDTO> getAll() {  
+    public List<MesaDTO> findAll() {  
         return this.mesaDao.findAll().stream()
             .map(this.mesaMapper::mesaEntityToMesaDto)
             .toList();        
@@ -35,7 +35,7 @@ public class MesaServiceImpl implements IMesaService {
 
     // Obtiene una mesa específica por su ID y la convierte en un DTO
     @Override
-    public MesaDTO getOneById(Long id) throws EntityNotFoundException { 
+    public MesaDTO findById(Long id) throws EntityNotFoundException { 
         return this.mesaDao.findById(id)
             .map(this.mesaMapper::mesaEntityToMesaDto)
             .orElseThrow(() -> new EntityNotFoundException("La mesa con el id " + id + " no existe."));
