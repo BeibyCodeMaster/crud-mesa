@@ -1,4 +1,4 @@
-package restaurante.example.demo.error.dto;
+package restaurante.example.demo.exceptions.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

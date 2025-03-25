@@ -5,9 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import restaurante.example.demo.error.EntityDataAccesException;
-import restaurante.example.demo.error.EntityIllegalArgumentException;
-import restaurante.example.demo.error.EntityNotFoundException;
+import restaurante.example.demo.exceptions.EntityDataAccesException;
+import restaurante.example.demo.exceptions.EntityIllegalArgumentException;
+import restaurante.example.demo.exceptions.EntityNotFoundException;
 import restaurante.example.demo.presentation.dto.MesaDTO;
 import restaurante.example.demo.presentation.dto.MessageResponseDto;
 import restaurante.example.demo.service.interfaces.IMesaService;
@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/mesa")
-// Controlador encargado de procesar las peticiones relacionadas con las mesas
+// Controlador encargado de procesar las peticiones del cliente relacionadas con la entidad mesa
 public class MesaController {
         
     @Autowired

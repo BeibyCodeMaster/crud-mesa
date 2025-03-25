@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-// Componeten encargado de conectarse e interactuar con la base de datos ejecutando operaciones relacionados con la mesa.
+//Componeten que se comunica e interactua con la base de datos para ejecutar operaciones relacionadas con la mesa.
 public class MesaDaoImpl implements IMesaDao {
     
     @Autowired
-    private IMesaRepository mesaRepository; // Repositorio de acceso a datos para la entidad "Mesa"
+    private IMesaRepository mesaRepository; // Repositorio que interacuta con la base de datos.
     
     @Override
     @Transactional(readOnly = true)

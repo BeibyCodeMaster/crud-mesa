@@ -4,8 +4,8 @@ package restaurante.example.demo.service.implementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
-import restaurante.example.demo.error.EntityDataAccesException;
-import restaurante.example.demo.error.EntityNotFoundException;
+import restaurante.example.demo.exceptions.EntityDataAccesException;
+import restaurante.example.demo.exceptions.EntityNotFoundException;
 import restaurante.example.demo.persistence.dao.interfaces.IMesaDao;
 import restaurante.example.demo.persistence.model.MesaEntity;
 import restaurante.example.demo.presentation.dto.MesaDTO;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-// Este servicio contien los casos de uso de la mesa dentro de la aplicacion.
+// Contiene todos los casos de uso referentes a la mesa en la aplicacion.
 public class MesaServiceImpl implements IMesaService {
 
     @Autowired
